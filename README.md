@@ -1,4 +1,4 @@
-#### Simple full-stack todo app built with NextJS, TailwindCSS and Prisma
+## Simple full-stack todo app built with NextJS, TailwindCSS and Prisma
 
 ![app apperance](/public/appAppearance.png)
 
@@ -37,5 +37,5 @@ _Don't forget to create a `POSTGRES_URL` variable in the `.env` file_
 For testing purpose, the following is an example:
 
 ```.env
-POSTGRES_URL="postgresql://postgres:test@localhost:15432/dev-db"
+POSTGRES_URL="postgresql://postgres:test@localhost:5432/dev-db"
 ```
