@@ -1,5 +1,7 @@
 #### Simple full-stack todo app built with NextJS, TailwindCSS and Prisma
 
+![app apperance](/public/appAppearance.png)
+
 ---
 
 Can do basic CRUD operations, without validation.
