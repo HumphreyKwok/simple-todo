@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start-docker": "npx prisma migrate deploy && node .next/standalone/server.js"
   },
   "dependencies": {
     "@prisma/client": "^6.0.1",

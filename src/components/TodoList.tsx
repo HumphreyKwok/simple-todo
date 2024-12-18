@@ -1,6 +1,6 @@
 "use client";
 import { deleteTodo } from "@/action/backendAPI";
-import { FaCheck, FaPen, FaX } from "react-icons/fa6";
+import { FaPen, FaX } from "react-icons/fa6";
 
 import { useState } from "react";
 import UpdateTodoForm from "./UpdateTodoForm";
@@ -30,9 +30,11 @@ const TodoList = ({ todos }: TProps) => {
   };
 
   const handleEdit = (todoId: string) => {
-    editingIds.includes(todoId)
-      ? setEditingIds(editingIds.filter((editingId) => editingId !== todoId))
-      : setEditingIds(editingIds.concat(todoId));
+    if (editingIds.includes(todoId)) {
+      setEditingIds(editingIds.filter((editingId) => editingId !== todoId));
+    } else {
+      setEditingIds(editingIds.concat(todoId));
+    }
   };
 
   return (
@@ -48,12 +50,6 @@ const TodoList = ({ todos }: TProps) => {
 
           {editingIds.includes(todo.id) ? (
             <div className="flex h-12 items-center gap-4">
-              {/* <button
-                className="rounded-md bg-yellow-400 px-4 py-2 font-bold text-black outline-none transition-transform duration-200 hover:-translate-y-0.5 hover:bg-yellow-500"
-                onClick={() => handleEdit(todo.id)}
-              >
-                <FaCheck />
-              </button> */}
               <UpdateTodoForm
                 todoId={todo.id}
                 currentContent={todo.content}

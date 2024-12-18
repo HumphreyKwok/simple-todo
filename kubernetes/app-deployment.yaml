@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-next-deployment
+  labels:
+    name: todo-next
+    app: todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: todo-next
+      app: todo
+  template:
+    metadata:
+      name: todo-next
+      labels:
+        name: todo-next
+        app: todo
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_URL
+              value: postgresql://postgres:test@todo-postgres-service:5432/todo
+          image: docker.io/library/simple-todo-app:latest
+          imagePullPolicy: Never
+          name: todo-next
+          ports:
+            - containerPort: 3000
+              protocol: TCP

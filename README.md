@@ -6,25 +6,71 @@
 
 Can do basic CRUD operations, without validation.
 
-The database needs to be ran in a Postgres environment, you can create your own or use the docker compose file to run it in docker.
+The app needs to connect to a postgres database, you can create your own or use a docker image.
 
-I created this for testing the CI/CD pipeline on GCP, implemented with GKE and GitHub actions.
+I created this for while I was teaching my mentee about webdev.
 
-if you are deploying it in a local environment, first run
+It can also be used for local kubernetes deployment, or testing the CI/CD pipeline on GCP, implemented with GKE and GitHub actions.
+
+---
+
+## Running in Kubernetes Engines (Minikube)
+
+if you are deploying it in some Kubernetes engine, first run
 
 ```zsh
-npm run dev
+npm install
 ```
 
 to install the required packages and then run
 
 ```zsh
+docker build -t simple-todo-app .
+```
+
+to build an image of the next.js application.
+
+After you get the Kubernetes engine ready, e.g. minikube on local machine, start the database deployment and service using:
+
+```zsh
+kubectl apply -f kubernetes/db*.yaml
+```
+
+and then start the next deployment and service using:
+
+```zsh
+kubectl apply -f kubernetes/app*.yaml
+```
+
+The application will be accessible via a link managed by minikube, you can get the link using:
+
+```zch
+minikube service todo-next-service
+```
+
+---
+
+## Running both containers in Docker
+
+Build the next.js image with:
+
+```zsh
+docker build -t simple-todo-app .
+```
+
+Start the database and next.js container using Docker Compose:
+
+```zsh
 docker compose up
 ```
 
-to build a local postgres container.
+and the app will be running on `http://localhost:3000`.
 
-After the installation and database setup, you can run the app with
+---
+
+## Running next.js server on local machine, and the postgres container in Docker
+
+If you simply want a quick preview of the app, you can use an official postgres image, and run the app on dev server using the command:
 
 ```zsh
 npm run dev
@@ -32,7 +78,7 @@ npm run dev
 
 and the app will be running on `http://localhost:3000`.
 
-_Don't forget to create a `POSTGRES_URL` variable in the `.env` file_
+If you are running the dev server on local machine, do not forget to create an `.env` file
 
 For testing purpose, the following is an example:
 

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import AddTodoForm from "@/components/AddTodoForm";
 import TodoList from "@/components/TodoList";
 import prisma from "@/lib/db";

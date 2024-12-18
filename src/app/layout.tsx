@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Simple TODO app",
-  description: "This is for demonstrationg purpose only",
+  description:
+    "Simple full-stack todo app built with NextJS, TailwindCSS and Prisma",
 };
 
 export default function RootLayout({

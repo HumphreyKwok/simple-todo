@@ -14,8 +14,11 @@ export async function addTodo(todo: string) {
     revalidatePath("/");
 
     return { status: 201, message: `Added todo: ${todo}` };
-  } catch (e) {
-    return { status: 500, error: "Unable to write to database" };
+  } catch (error) {
+    return {
+      status: 500,
+      error: `Unable to write to database, error details: ${error}`,
+    };
   }
 }
 
@@ -33,8 +36,11 @@ export async function updateTodo(todoId: string, content: string) {
     revalidatePath("/");
 
     return { status: 200, message: `Deleted todo withId: ${todoId}` };
-  } catch (e) {
-    return { status: 500, error: "Unable to write to database" };
+  } catch (error) {
+    return {
+      status: 500,
+      error: `Unable to write to database, error details: ${error}`,
+    };
   }
 }
 
@@ -49,7 +55,10 @@ export async function deleteTodo(todoId: string) {
     revalidatePath("/");
 
     return { status: 204, message: `Deleted todo withId: ${todoId}` };
-  } catch (e) {
-    return { status: 500, error: "Unable to write to database" };
+  } catch (error) {
+    return {
+      status: 500,
+      error: `Unable to write to database, error details: ${error}`,
+    };
   }
 }
