@@ -11,9 +11,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
     restart: always
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/humphreykwok/simple-todo-next:latest
     ports:
       - "3000:3000"
     environment:

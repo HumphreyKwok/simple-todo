@@ -22,8 +22,7 @@ spec:
         - env:
             - name: POSTGRES_URL
               value: postgresql://postgres:test@todo-postgres-service:5432/todo
-          image: docker.io/library/simple-todo-app:latest
-          imagePullPolicy: Never
+          image: ghcr.io/humphreykwok/simple-todo-next:latest
           name: todo-next
           ports:
             - containerPort: 3000
