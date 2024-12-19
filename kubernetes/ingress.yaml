@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: todo-next-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: todo-next-ip
+    networking.gke.io/managed-certificates: todo-next-cert
+    kubernetes.io/ingress.class: "gce"
+spec:
+  defaultBackend:
+    service:
+      name: todo-next-service
+      port:
+        number: 3000
